@@ -3,7 +3,7 @@
  */
 public with sharing class AddressUndeliverableCtlr {
 
-    private static Map<String, Id> accRTIdsByDeveloperName = trac_Utils.getRecordTypeIdsByDeveloperName(Account.SObjectType);
+    private static Map<String, Id> accRTIdsByDeveloperName = getRecordTypeIdsByDeveloperName(Account.SObjectType);
 
     @auraEnabled
     public static npsp__Address__c getDefaultAddress(Id recordId) {
@@ -146,6 +146,36 @@ public with sharing class AddressUndeliverableCtlr {
             npsp__Default_Address__c = true
         );
         insert address;
+    }
+
+    public static Map<String, Id> getRecordTypeIdsByDeveloperName(Schema.SObjectType token) {
+        Map<String, Id> mapRecordTypes = recordTypeIdsByDeveloperNameCache.get(token);
+
+        // Return if already cached
+        if (mapRecordTypes != null) {
+            return mapRecordTypes;
+        }
+
+        // If not, build a map of RecordTypeIds keyed by DeveloperName
+        mapRecordTypes = new Map<String, Id>();
+        Schema.DescribeSObjectResult obj = token.getDescribe();
+
+        List<RecordType> results = [SELECT Id, Name, DeveloperName
+                                    FROM RecordType
+                                    WHERE SObjectType = :obj.getName()];
+
+        // Obtain the RecordTypeInfos for this SObjectType token
+        Map<Id, Schema.RecordTypeInfo> recordTypeInfos = obj.getRecordTypeInfosByID();
+
+        for (SObject rt : results) {
+            if (recordTypeInfos.get(rt.Id).isAvailable()) {
+                mapRecordTypes.put(String.valueOf(rt.get('DeveloperName')), rt.Id);
+            }
+        }
+
+        recordTypeIdsByDeveloperNameCache.put(token, mapRecordTypes);
+
+        return mapRecordTypes;
     }
 
 }

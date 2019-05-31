@@ -1,0 +1,17 @@
+<!--
+ - Created by mbuhler on 2018-04-05.
+ -->
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId,force:hasSObjectName" access="global">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:handler name="NavigateScreen1" event="c:AddressUndeliverableEvent" action="{!c.handleNavigateScreen1}"/>
+    <aura:handler name="NavigateScreen2" event="c:AddressUndeliverableEvent" action="{!c.handleNavigateScreen2}"/>
+    <aura:handler name="NavigateScreen3" event="c:AddressUndeliverableEvent" action="{!c.handleNavigateScreen3}"/>
+    <aura:handler name="NavigateScreen4" event="c:AddressUndeliverableEvent" action="{!c.handleNavigateScreen4}"/>
+    <aura:handler name="NavigateScreen5" event="c:AddressUndeliverableEvent" action="{!c.handleNavigateScreen5}"/>
+    <aura:handler name="NavigateScreen6" event="c:AddressUndeliverableEvent" action="{!c.handleNavigateScreen6}"/>
+
+    {!v.body}
+
+</aura:component>

@@ -1,0 +1,30 @@
+<!--
+ - Created by mbuhler on 2018-04-06.
+ -->
+<aura:component controller="AddressUndeliverableCtlr">
+
+    <aura:attribute name="addressId" type="String"/>
+    <aura:attribute name="isWaiting" type="Boolean" default="true"/>
+
+    <aura:registerEvent name="NavigateScreen4" type="c:AddressUndeliverableEvent"/>
+    <aura:registerEvent name="NavigateScreen6" type="c:AddressUndeliverableEvent"/>
+
+    <div class="slds-text-heading--medium">Select the undeliverable reason:</div><br/>
+
+    <lightning:recordEditForm aura:id="undeliverableReasonForm" recordId="{!v.addressId}" objectApiName="npsp__Address__c" onload="{!c.handleLoad}" onsuccess="{!c.handleSuccess}" onerror="{!c.handleError}">
+        <lightning:messages aura:id="messages" class="slds-hide" />
+        <lightning:inputField aura:id="undeliverableReason" fieldName="Undeliverable_Reason__c"/>
+        <lightning:button class="slds-m-top_small" variant="brand" type="button" name="Next" label="Next" disabled="{!v.isWaiting}" onclick="{!c.handleSubmit}"/>
+    </lightning:recordEditForm>
+
+    <aura:if isTrue="{!v.isWaiting}">
+        <div class="demo-only" style="height: 6rem;">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+</aura:component>

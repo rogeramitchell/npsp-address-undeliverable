@@ -1,0 +1,41 @@
+<!--
+ - Created by mbuhler on 2018-04-09.
+ -->
+<aura:component controller="AddressUndeliverableCtlr">
+
+    <aura:attribute name="accountId" type="String"/>
+    <aura:attribute name="address" type="npsp__Address__c"/>
+    <aura:attribute name="hasError" type="Boolean" default="false"/>
+    <aura:attribute name="isWaiting" type="Boolean" default="false"/>
+
+    <aura:registerEvent name="NavigateScreen6" type="c:AddressUndeliverableEvent"/>
+
+    <div class="slds-text-heading--medium">Create a new default address:</div><br/>
+
+    <aura:if isTrue="{!v.hasError}">
+        <ui:message severity="error" closable="false">
+            At least one field must have a value.
+        </ui:message>
+    </aura:if>
+
+    <ui:inputText aura:id="street1" label="Street Address"/>
+    <ui:inputTextArea aura:id="street2" label="Street Address 2" rows="2"/>
+    <ui:inputText aura:id="city" label="City"/>
+    <ui:inputText aura:id="province" label="State/Province"/>
+    <ui:inputText aura:id="postalCode" label="ZIP/Postal Code"/>
+    <ui:inputText aura:id="country" label="Country"/>
+
+    <lightning:button class="slds-m-top_small" variant="brand" name="Create" label="Create" onclick="{!c.handleClickCreate}" disabled="{!v.isWaiting}"/>&nbsp;
+    <lightning:button class="slds-m-top_small" variant="neutral" name="Cancel" label="Cancel" onclick="{!c.handleClickCancel}" disabled="{!v.isWaiting}"/>
+
+    <aura:if isTrue="{!v.isWaiting}">
+        <div class="demo-only" style="height: 6rem;">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+</aura:component>

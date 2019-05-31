@@ -1,0 +1,20 @@
+<!--
+ - Created by mbuhler on 2018-04-09.
+ -->
+<aura:component>
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="message" type="String"/>
+
+    <aura:if isTrue="{!v.message != null}">
+        <div class="slds-text-heading--medium">
+            <ui:outputText value="{!v.message}"/>
+        </div><br/>
+        <aura:set attribute="else">
+            <div class="slds-text-heading--medium">Done!</div><br/>
+        </aura:set>
+    </aura:if>
+
+    <lightning:button variant="brand" name="Close" label="Close" onclick="{!c.handleClickClose}"/>
+
+</aura:component>

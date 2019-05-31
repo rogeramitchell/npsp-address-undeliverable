@@ -1,0 +1,8 @@
+<!--
+ - Created by mbuhler on 2018-04-05.
+ -->
+<aura:event type="COMPONENT" description="AddressUndeliverableEvent">
+    <aura:attribute name="addressId" type="String"/>
+    <aura:attribute name="accountId" type="String"/>
+    <aura:attribute name="message" type="String"/>
+</aura:event>

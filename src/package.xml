@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>AddressUndeliverableCtlr</members>
+        <members>AddressUndeliverableCtlrTest</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>AddressUndeliverable</members>
+        <members>AddressUndeliverableBadAddress</members>
+        <members>AddressUndeliverableDefaultAddress</members>
+        <members>AddressUndeliverableEvent</members>
+        <members>AddressUndeliverableScreen1</members>
+        <members>AddressUndeliverableScreen2</members>
+        <members>AddressUndeliverableScreen3</members>
+        <members>AddressUndeliverableScreen4</members>
+        <members>AddressUndeliverableScreen5</members>
+        <members>AddressUndeliverableScreen6</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>Account.Address_Undeliverable</members>
+        <members>Contact.Address_Undeliverable</members>
+        <name>QuickAction</name>
+    </types>
+    <version>45.0</version>
+</Package>

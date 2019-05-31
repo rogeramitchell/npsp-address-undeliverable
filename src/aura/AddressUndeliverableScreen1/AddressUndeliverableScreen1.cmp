@@ -1,0 +1,46 @@
+<!--
+ - Created by mbuhler on 2018-04-05.
+ -->
+<aura:component controller="AddressUndeliverableCtlr">
+
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="defaultAddress" type="npsp__Address__c"/>
+    <aura:attribute name="isWaiting" type="Boolean" default="true"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:registerEvent name="NavigateScreen2" type="c:AddressUndeliverableEvent"/>
+    <aura:registerEvent name="NavigateScreen3" type="c:AddressUndeliverableEvent"/>
+    <aura:registerEvent name="NavigateScreen6" type="c:AddressUndeliverableEvent"/>
+
+    <aura:if isTrue="{!v.defaultAddress != null &amp;&amp; v.defaultAddress.Undeliverable_Date__c == null}">
+        <div class="slds-text-heading--medium">Flag this address as undeliverable?</div><br/>
+
+        <article class="slds-card">
+            <div class="slds-card__body slds-card__body_inner">
+                <aura:unescapedHtml value="{!v.defaultAddress.npsp__Formula_MailingAddress__c}"/>
+            </div>
+        </article>
+
+        <lightning:button aura:id="buttonYes" class="slds-m-top_small" variant="brand" label="Yes" onclick="{!c.handleClickYes}" disabled="{!v.isWaiting}"/>
+        <lightning:button aura:id="buttonNo" class="slds-m-top_small" variant="brand" label="No" onclick="{!c.handleClickNo}" disabled="{!v.isWaiting}"/>
+
+        <aura:set attribute="else">
+            <div class="slds-text-heading--medium">
+                Default address is already flagged as undeliverable.
+            </div><br/>
+            <lightning:button aura:id="buttonNo" class="slds-m-top_small" variant="brand" label="Next" onclick="{!c.handleClickNo}" disabled="{!v.isWaiting}"/>
+        </aura:set>
+    </aura:if>
+
+    <aura:if isTrue="{!v.isWaiting}">
+        <div class="demo-only" style="height: 6rem;">
+            <div role="status" class="slds-spinner slds-spinner_medium">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+
+</aura:component>

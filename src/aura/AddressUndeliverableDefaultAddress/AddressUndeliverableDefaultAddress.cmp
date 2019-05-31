@@ -1,0 +1,29 @@
+<!--
+ - Created by mbuhler on 2018-04-06.
+ -->
+<aura:component controller="AddressUndeliverableCtlr">
+
+    <aura:attribute name="addressId" type="String"/>
+    <aura:attribute name="address" type="String"/>
+    <aura:attribute name="isWaiting" type="Boolean" default="false"/>
+
+    <aura:registerEvent name="NavigateScreen6" type="c:AddressUndeliverableEvent"/>
+    <aura:registerEvent name="StartWaiting" type="c:AddressUndeliverableEvent"/>
+    <aura:registerEvent name="StopWaiting" type="c:AddressUndeliverableEvent"/>
+
+    <article class="slds-card">
+        <div class="slds-card__body slds-card__body_inner">
+            <div class="slds-clearfix">
+                <div class="slds-clearfix">
+                    <div class="slds-float_left">
+                        <aura:unescapedHtml value="{!v.address}"/>
+                    </div>
+                    <div class="slds-float_right">
+                        <lightning:button variant="brand" label="Set As Default" onclick="{!c.handleClickDefault}" disabled="{!v.isWaiting}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+</aura:component>

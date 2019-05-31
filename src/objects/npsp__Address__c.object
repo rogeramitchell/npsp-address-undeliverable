@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Undeliverable_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Undeliverable Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Undeliverable_Reason__c</fullName>
+        <externalId>false</externalId>
+        <label>Undeliverable Reason</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>NCOA Former Address</fullName>
+                    <default>false</default>
+                    <label>NCOA Former Address</label>
+                </value>
+                <value>
+                    <fullName>Returned Mail</fullName>
+                    <default>false</default>
+                    <label>Returned Mail</label>
+                </value>
+                <value>
+                    <fullName>Constituent Request</fullName>
+                    <default>false</default>
+                    <label>Constituent Request</label>
+                </value>
+                <value>
+                    <fullName>Incomplete Address</fullName>
+                    <default>false</default>
+                    <label>Incomplete Address</label>
+                </value>
+                <value>
+                    <fullName>Undeliverable in Donor Direct</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Undeliverable in Donor Direct</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Address</label>
+</CustomObject>

@@ -19,6 +19,10 @@
         <name>AuraDefinitionBundle</name>
     </types>
     <types>
+        <members>npsp__Address__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
         <members>Account.Address_Undeliverable</members>
         <members>Contact.Address_Undeliverable</members>
         <name>QuickAction</name>
